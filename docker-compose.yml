@@ -1,0 +1,25 @@
+services:
+  ts-app:
+    container_name: ts-app
+    build:
+      args:
+        PHP_VERSION: "8"
+      context: ./docker/ts-app-image/
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+      - ./docker/config/ts-app/php.ini:/usr/local/etc/php/conf.d/php.ini
+    environment:
+      - APACHE_DOCUMENT_ROOT=/app/public
+      - WEB_DOCUMENT_INDEX=index.php
+      - PHP_IDE_CONFIG=serverName=ts-app
+      - APP_ENV=dev
+      - APP_DEBUG=1
+      - COMPOSER_MEMORY_LIMIT=-1
+    working_dir: /app
+    ports:
+      - "8070:80"
+    expose:
+      - "80"
+networks:
+  formalist-network:
