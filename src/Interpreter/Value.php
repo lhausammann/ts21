@@ -15,8 +15,18 @@ class Value implements NodeInterface
         return $this->value;
     }
 
+    public function getValue()
+    {
+        return $this->value;
+    }
+
     public function __toString(): string
     {
         return (string) $this->value;
+    }
+
+    public function accept(VisitorInterface $visitor): mixed
+    {
+        return $visitor->visitValue($this);
     }
 }

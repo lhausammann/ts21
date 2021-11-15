@@ -1,10 +1,10 @@
 <?php
-
-
 namespace App\Interpreter;
 
 
-class VisitorInterface
+interface VisitorInterface
 {
-
+    public function visitPlus(NodeInterface $node);
+    public function visitMinus(NodeInterface $node);
+    public function visitValue(NodeInterface $node);
 }

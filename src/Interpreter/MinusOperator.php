@@ -4,10 +4,8 @@
 namespace App\Interpreter;
 
 
-class MinusOperator implements NodeInterface
+class MinusOperator extends AbstractOperator
 {
-
-    public function __construct(private NodeInterface $left, private NodeInterface $right) {}
 
     public function execute(array $context = null): mixed
     {
